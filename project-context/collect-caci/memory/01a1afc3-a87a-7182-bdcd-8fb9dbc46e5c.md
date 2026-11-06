@@ -5,10 +5,10 @@ kind: note
 title: collect_caci — overview draft
 project: 0cf5ed59-0357-4647-aa28-d8ed6258a8b5
 created: "2026-11-06T07:29:57Z"
-updated: "2026-11-06T07:29:57Z"
+updated: "2026-11-06T08:16:56Z"
 source: claude
 verification: unverified
-labels: [draft, overview]
+labels: [overview, discarded]
 ---
 
 # Collect Your Ćaci: overview

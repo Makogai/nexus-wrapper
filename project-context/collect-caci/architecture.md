@@ -3,11 +3,11 @@ nexus: 1
 id: 01a1ae00-21f3-74e7-aac9-934ce88e5db0
 kind: spec
 title: collect_caci — architecture
-status: draft
+status: active
 project: 0cf5ed59-0357-4647-aa28-d8ed6258a8b5
 topic: architecture
 created: "2026-11-05T23:16:46Z"
-updated: "2026-11-05T23:16:46Z"
+updated: "2026-11-06T08:16:51Z"
 source: import
 ---
 
@@ -23,4 +23,83 @@ _Created by NEXUS. The structure below is read from the repository; the summary 
 
 ## Architecture summary
 
-_Not written yet._ Ask Claude in a session to draft it from the code (skill `workspace:architecture-documentation`); a draft states which parts are inferred and stays `status: draft` until you review it.
+_Drafted by Claude in a NEXUS session and accepted on 2026-11-06. Facts marked as inferred still need checking._
+
+# Collect Your Ćaci: architecture (v3, full read)
+
+*Written from a full read of backend/, migrations, admin/ and app/ at commit `cdb36c5`. Each line says whether it was **verified** in the named file or **inferred**.*
+
+## 1. Components
+
+| Part | Stack | Entry | Notes |
+|---|---|---|---|
+| API | Node 22, Express 5, ESM, `pg` raw SQL, zod, sharp, `@huggingface/transformers`, nodemailer | `backend/src/index.js` | Image `node:22-bookworm-slim`, Node-fetch healthcheck, `/data/uploads` + `/data/models` *(verified: backend/Dockerfile, package.json)* |
+| DB | Postgres 17 + `pg_trgm` | `backend/migrations/001-013` | Migrations applied by filename at boot; the opštine list is upserted from `src/data/opstine.js` on every start *(verified: db.js)* |
+| App | Flutter (Dart ≥ 3.10), `provider`, `http`, `shared_preferences`, `audioplayers`, `flutter_web_auth_2` | `app/lib/main.dart` | Android, iOS, web *(verified: pubspec.yaml)* |
+| Web | Flutter 3.44 build → nginx 1.27 | `app/docker/Dockerfile` | `/api` → `api:3000` proxy, `?v=<md5>` cache busting *(verified: Dockerfile, nginx.conf)* |
+| Admin | React 19, Vite, TanStack Query, react-router 7 | `admin/src/main.tsx` | Local only, generic table/drawer UI from `resources.tsx` *(verified)* |
+| Tools | Python | `tools/*.py` | Map JSON from geoBoundaries/OSM, synthesized WAVs, Phosphor code points, app icon *(verified: script headers)* |
+
+## 2. Data model *(verified: migrations)*
+- **users**: `indeksi` (CHECK ≥ 0), `equipped` jsonb, `last_caci_at`, `is_admin`, `avatar_path`, `email_verified` (default **true**). `password_hash` is NULL for social-only accounts.
+- **cacis**: name plus `name_norm` (GIN trigram), `age` 14-110, `opstina_id`, `image_source` ai | upload | placeholder, `source_hash` / `image_hash` BIT(64), CLIP `image_embedding` / `head_embedding` real[], `head_path`, `head_circle`, `head_done`, `is_super`. It also keeps four counters (`plus_count`, `minus_count`, `comment_count`, `report_count`), and **`is_fake` is a generated column** (`minus ≥ 5 AND minus ≥ 2·plus`).
+- **votes** (PK caci+user, ±1), **comments** (one level: `parent_id`, `reply_to_user_id`, `like_count`, `reply_count`), **comment_likes**, **reports** (PK caci+user), **friendships** (unique per unordered pair, pending | accepted).
+- **index_ledger** (`UNIQUE(user_id, key)`), **user_items**, **ride_scores**, **maze_scores**, **user_identities**, **email_codes**.
+- Everything hangs off `users ON DELETE CASCADE`.
+
+## 3. Request flow
+- **Auth.** A Bearer JWT (`sub`, 30 days) is verified by `requireAuth`; the user is not re-loaded *(verified: auth.js)*. Public routes: `/health`, `/auth/*`, `/meta/*`, `/uploads/*` (static, 30-day immutable cache) *(verified: index.js, stats.js)*. The `router.use(requireAuth)` in stats.js also gates the social, games and store routers mounted after it at `/` *(verified order; Express semantics inferred)*.
+- **Errors.** `HttpError(status, msg, extra)` → `{error, ...extra}`, with generic text for 5xx *(verified)*.
+- **Sign-up and login.** bcrypt (cost 10), password min 6. When SMTP is set, the register route stores an unverified user and mails a hashed 6-digit code (15 min, 5 attempts, 60 s between resends, 5 mails an hour). Unverified accounts older than 1 day free their username and email *(verified: routes/auth.js, services/verification.js)*.
+- **Adding a ćaci** (two uploads of the same image from the app: check, then create):
+  - `caciSchema` requires two words in the name and only allows mode `caricature`;
+  - cooldown (60 min) and daily limit (rolling 24 h, 10);
+  - dHash plus CLIP whole and head-crop embeddings;
+  - `findMatches`: same picture anywhere (Hamming ≤ 8 / ≤ 4), else in-JS scoring of up to 5000 cacis of that opština (0.4 name + 0.4 image + 0.2 age, refused only when all three agree);
+  - store a 768² webp;
+  - one transaction: claim the cooldown, insert, `book(+5)`;
+  - `queueHeadCut` *(verified: routes/cacis.js, duplicates.js, images.js, add_caci_screen.dart)*.
+- **Voting.** `SELECT … FOR UPDATE`, upsert or delete, delta counters. When the vote flips the ćaci to fake, minus voters get `good_eye`. The first vote on a ćaci pays 2 (cap 15 a day) *(verified)*. The app waits for the server (not optimistic), then `publishCaci`, which patches every `CaciListSync` list and calls `refreshMe`. 1.2 s later it runs the achievement check and `/wallet/checkin` *(verified: caci_widgets.dart, session.dart)*.
+- **Comments.** Word list (folded Cyrillic and leetspeak), then optional OpenAI `omni-moderation-latest` (5 s timeout, fails open), 422 on a hit. Delta counters in a transaction *(verified: moderation.js, cacis.js)*.
+- **Economy.** `book(db, user, amount, reason, key)`. Daily caps use the Belgrade date, levels come from positive ledger rows, and achievements are derived on every check-in (no unlock table) *(verified: economy.js, levels.js, achievements.js)*.
+- **Rankings, map and opština stats** are computed on the fly with aggregates (`SCORE_SQL`) *(verified: stats.js)*.
+
+## 4. Background work *(verified: index.js, similarity.js, headcut.js)*
+- At start: `warmUp()` loads CLIP (q8) and back-fills missing embeddings. `backfillHeadCuts()` queues rows that are `NOT head_done`.
+- Head cutout: an in-process promise chain, one job at a time. OWL-ViT detector (fp16), falling back to the silhouette, then ormbg background removal on the head crop, an ellipse mask, a transparent webp, and `[cx, cy, r]`.
+- Nothing survives a restart except the `head_done` flag, which re-queues on the next boot.
+
+## 5. App structure *(verified: lib/)*
+- `Session` (ChangeNotifier) holds the token, `me`, opštine, config, and the notifiers `caciChanges`, `feedVersion`, `rewards`, `unlockedAchievements` and `walletIntro`.
+- `Shell` is an `IndexedStack`: Početna, Studenti, Rang, Profil, plus a centre "+".
+- The feed is paged by limit/offset with filters for scope, sort and opština.
+- The map (`map/region_map.dart`) parses `assets/map/map.json` into Paths; `map_screen.dart` paints it inside `InteractiveViewer`.
+- **Games**: a Ticker → `_frame` ValueNotifier, with `dt` clamped to 1/30 s, so below 30 fps the game slows down rather than skipping frames *(inferred from the clamp)*.
+  - Ćacilend: a 19×22 mirrored grid, tile-centre turning, and four chaser styles (direct, ambush 4 tiles ahead, shy, roamer) plus "strong", with break waves.
+  - Ride: `CityRide` (pseudo-3D lanes) and `FieldRide` (side-scroller). The daily suggested mode comes from a hash of the device-local date.
+  - Head framing is saved per device in SharedPreferences.
+- Sound effects on the web go through Web Audio (`sound_web.dart`); music uses audioplayers.
+
+## 6. Integrations
+- **OAuth** (Google, Facebook, Apple): `state` is a 10-minute JWT, redirects are checked against an allowlist, accounts are linked by email, and the token comes back in the redirect query. The web popup posts only to its own origin *(verified: oauth.js, web/auth.html)*.
+- **OpenAI**: image edits (closed photo mode) and moderation. **SMTP**: nodemailer, port 465 = TLS *(verified)*.
+- **Coolify** + Traefik (`trust proxy` 1). **Cloudflare** in front of the web app *(verified: index.js; per CHANGELOG)*.
+
+## 7. Key decisions *(verified unless marked)*
+- Raw SQL, denormalized counters kept by deltas, and an admin `recount()` to repair them.
+- Real photos are never stored, and there is no face recognition. CLIP measures drawing style, so the image alone never refuses a duplicate.
+- Game scores are trusted from the client and bounded only by zod maxima and the daily wallet caps.
+- The admin API is opt-in, and `is_admin` is re-checked on every request. The admin panel is never deployed.
+- Store prices and items exist, but `STORE_OPEN = false`.
+
+## 8. Risks and gaps
+1. **Critical: `/auth/verify` issues a token for any verified account without checking the code** *(verified: routes/auth.js:92-99)*. `seed.js:136` makes `demo` an admin on every seeded database, the beta included *(verified)*. Tracked in its own urgent NEXUS task.
+2. **No rate limiting anywhere.** The reward caps (`rewardCapped`, `rewardVote`) read and then write with no lock, so parallel requests can go over a cap *(verified; impact inferred as small)*.
+3. **Counter drift.** Deleting a user via the admin API recounts only the cacis that user voted on, commented on or reported, and misses likes they left elsewhere *(verified: admin.js users.remove)*.
+4. **Orphaned files.** Ćaci and admin deletes, admin image replacement, and failed creates leave webp and head files behind *(verified)*.
+5. **opštine are owned by the data file.** A rename or delete in the admin panel is re-inserted on the next boot *(verified: db.js migrate)*.
+6. **Facebook emails are linked without a verified check**, and the OAuth `state` isn't bound to the browser *(verified / inferred)*.
+7. **"Real photos are never stored" depends on users uploading drawings.** In caricature mode the server can't tell a photo from a drawing *(inferred)*.
+8. **Duplicate matching loads every ćaci of the opština into JS twice per add**, so it slows as an opština grows *(verified LIMIT 5000; impact inferred)*.
+9. **Endpoints the app never calls:** GET `/games/ride/:caciId`, `/stats/overview`, `/store*`, and the `zemlja` filter *(verified by grep)*.
+10. **No tests or CI** *(verified)*.

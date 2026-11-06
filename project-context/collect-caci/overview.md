@@ -7,26 +7,39 @@ status: active
 project: 0cf5ed59-0357-4647-aa28-d8ed6258a8b5
 topic: overview
 created: "2026-11-05T23:16:46Z"
-updated: "2026-11-05T23:16:46Z"
+updated: "2026-11-06T08:16:17Z"
 source: import
 ---
 
-_Created by NEXUS from the project's files; every fact names its source. This document is yours — NEXUS will not overwrite it._
+_Drafted by Claude in a NEXUS session and accepted on 2026-11-06. Facts marked as inferred still need checking._
+
+# Collect Your Ćaci: overview (v2)
 
 ## What it is
+A satirical social game for a Serbian audience. Players ("studenti") "catch" Ćaci, caricatures of people they see as pro-government loyalists. Each gets a name, age and opština, and the crowd votes plus or minus *(verified: CLAUDE.md, routes/cacis.js)*. A ćaci the crowd rejects is stamped "NIJE ĆACI" and costs its collector 50 points *(verified: services/scoring.js)*. The UI is in Serbian (Latin script); code and commits are in English *(verified: CLAUDE.md)*.
 
-> Satirična društvena igra: hvataš Ćacije (karikature), ekipa daje pluseve i minuse, rang liste po lovcima i opštinama.
+## Who uses it
+- Players on Android, iOS and the web (one Flutter app) *(verified: app/pubspec.yaml)*.
+- Two developers (Marko, gale_091), each with their own Claude. They hand work over through `docs/CHANGELOG.md` *(verified: CHANGELOG, git history)*.
+- Admins, through a local-only React panel *(verified: admin/vite.config.ts)*.
 
-_Source: README.md._
+## Main features
+- Adding a ćaci. Only the "caricature" mode is open: art made in ChatGPT from one of 50 prompt variants *(verified: caciSchema, routes/stats.js)*.
+- Duplicate detection from the name trigram, a local CLIP embedding and age *(verified: routes/cacis.js, services/similarity.js)*.
+- Votes, threaded comments with likes, reports, friends, search, a feed with filters *(verified: route lists)*.
+- Rankings and a map across Serbia, Montenegro and Republika Srpska *(verified: routes/stats.js; per CLAUDE.md)*.
+- The indeksi currency: a ledger, daily caps, levels and achievements *(verified: services/economy.js)*.
+- Mini games: the ride (in two modes) and the Ćacilend maze. Scores are client-reported and capped *(verified: routes/games.js)*.
+- Email verification with a 6-digit code. Social login is hidden until keys are set *(verified: services/verification.js, routes/oauth.js)*.
 
-## Repository
+## How to run and test
+- `docker compose up -d --build` starts db, api, web and admin. Web runs on :8080, API on :3000, Postgres on :5433 *(verified: docker-compose.yml)*.
+- `cd app && flutter run -d chrome --dart-define=API_URL=http://localhost:3000` gives hot reload *(verified: README.md)*.
+- Checks: `flutter analyze` must stay clean, plus the curl smoke test in CLAUDE.md *(verified: CLAUDE.md)*.
+- **There are no automated tests and no CI** *(verified: empty app/test, no test script, no .github)*.
 
-- Remote: `git@github.com:Makogai/collect_caci.git`
-
-## Technology (detected from manifest files)
-
-- Stacks: docker
-
-## Instructions and documentation in the repository
-
-- README, CLAUDE.md
+## Status and gaps
+- Public beta on Coolify with demo data. The API is caci.mrh.lol *(verified: admin/vite.config.ts, docs/DEPLOY.md)*.
+- **Critical defect: `POST /auth/verify` issues a token for any already-verified account without checking the code.** It came in with `cdb36c5` and is probably live if `main` auto-deploys *(verified: routes/auth.js:92-99; the deploy status is inferred)*.
+- Still open: a report review UI, push notifications, password reset, profile editing, a production domain, and rate limits (none exist) *(verified: CLAUDE.md, grep)*.
+- The photo and placeholder modes and the store are switched off but still in the code *(verified: routes/cacis.js; store per CLAUDE.md)*.
