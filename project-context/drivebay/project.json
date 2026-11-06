@@ -1,0 +1,32 @@
+{
+  "nexus": 1,
+  "id": "ec39f27a-4d00-4e5d-9309-0919b95507de",
+  "name": "drivebay",
+  "remoteUrl": "https://github.com/Makogai/drivebay.git",
+  "stacks": [
+    "vue",
+    "laravel",
+    "vite",
+    "node",
+    "php",
+    "sql",
+    "docker"
+  ],
+  "packageManagers": [
+    "npm",
+    "composer"
+  ],
+  "commands": [
+    {
+      "kind": "dev",
+      "command": "npm run dev",
+      "source": "package.json scripts"
+    },
+    {
+      "kind": "build",
+      "command": "npm run build",
+      "source": "package.json scripts"
+    }
+  ],
+  "defaultBranch": "main"
+}

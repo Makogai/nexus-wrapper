@@ -28,6 +28,12 @@
       "name": "collect_caci",
       "remoteUrl": "git@github.com:Makogai/collect_caci.git",
       "context": "project-context/collect-caci"
+    },
+    {
+      "id": "ec39f27a-4d00-4e5d-9309-0919b95507de",
+      "name": "drivebay",
+      "remoteUrl": "https://github.com/Makogai/drivebay.git",
+      "context": "project-context/drivebay"
     }
   ]
 }

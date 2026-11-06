@@ -1,0 +1,378 @@
+{
+  "nexus": 1,
+  "requirements": [
+    {
+      "tool": "node",
+      "constraint": "26",
+      "source": ".nvmrc"
+    },
+    {
+      "tool": "npm",
+      "constraint": "",
+      "source": "package-lock.json"
+    },
+    {
+      "tool": "composer",
+      "constraint": "",
+      "source": "composer.json"
+    },
+    {
+      "tool": "php",
+      "constraint": "^8.2",
+      "source": "composer.json require.php"
+    },
+    {
+      "tool": "docker",
+      "constraint": "",
+      "source": "docker-compose.yml"
+    }
+  ],
+  "containers": {
+    "dockerfile": "Dockerfile",
+    "composeFile": "docker-compose.yml",
+    "composeServices": [
+      "postgres",
+      "meilisearch",
+      "redis",
+      "mailpit",
+      "adminer"
+    ],
+    "devcontainer": null,
+    "devcontainerImage": null
+  },
+  "envVars": [
+    {
+      "name": "APP_NAME",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_ENV",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_KEY",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_DEBUG",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_URL",
+      "source": ".env.example"
+    },
+    {
+      "name": "BRAND",
+      "source": ".env.example"
+    },
+    {
+      "name": "MARKETPLACE_HOSTS",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_BASE_DOMAIN",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_URL_SCHEME",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_CNAME_TARGET",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_SUBDOMAIN_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_UPGRADE_MODE",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_UPGRADE_PRICE",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_UPGRADE_CURRENCY",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_UPGRADE_PERIOD",
+      "source": ".env.example"
+    },
+    {
+      "name": "STOREFRONT_CONTACT_EMAIL",
+      "source": ".env.example"
+    },
+    {
+      "name": "LISTING_CARD_PRICE_TYPE_PLACEMENT",
+      "source": ".env.example"
+    },
+    {
+      "name": "LISTING_CARD_SPECS_STYLE",
+      "source": ".env.example"
+    },
+    {
+      "name": "LISTING_CARD_HOVER_PREVIEW_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "SEARCH_PANEL_STYLE",
+      "source": ".env.example"
+    },
+    {
+      "name": "VEHICLE_REGISTRATION_ESTIMATE_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_ECONOMY_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICE_PETROL_EUR",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICE_DIESEL_EUR",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICE_LPG_EUR",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICE_ELECTRIC_KWH_EUR",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_ECONOMY_MONTHLY_KM",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_ECONOMY_REAL_WORLD_MULTIPLIER",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_CONSUMPTION_CALCULATOR_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_CONSUMPTION_AI_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "OPENAI_API_KEY",
+      "source": ".env.example"
+    },
+    {
+      "name": "OPENAI_FUEL_CONSUMPTION_MODEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_SYNC_PAGES",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_SYNC_MAX_PAGES",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_SYNC_DAILY_PAGES",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_HISTORY_DAYS",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_HISTORY_MAX_DAYS",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_REQUEST_DELAY_MS",
+      "source": ".env.example"
+    },
+    {
+      "name": "FUEL_PRICES_TIMEOUT_SECONDS",
+      "source": ".env.example"
+    },
+    {
+      "name": "PRICE_RATING_ENABLED",
+      "source": ".env.example"
+    },
+    {
+      "name": "PRICE_RATING_SHOW_ON_CARDS",
+      "source": ".env.example"
+    },
+    {
+      "name": "PRICE_RATING_FORCED_ESTIMATE",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_LOCALE",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_FALLBACK_LOCALE",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_FAKER_LOCALE",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_MAINTENANCE_DRIVER",
+      "source": ".env.example"
+    },
+    {
+      "name": "BCRYPT_ROUNDS",
+      "source": ".env.example"
+    },
+    {
+      "name": "LOG_CHANNEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "LOG_STACK",
+      "source": ".env.example"
+    },
+    {
+      "name": "LOG_DEPRECATIONS_CHANNEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "LOG_LEVEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "DB_CONNECTION",
+      "source": ".env.example"
+    },
+    {
+      "name": "SESSION_DRIVER",
+      "source": ".env.example"
+    },
+    {
+      "name": "SESSION_LIFETIME",
+      "source": ".env.example"
+    },
+    {
+      "name": "SESSION_ENCRYPT",
+      "source": ".env.example"
+    },
+    {
+      "name": "SESSION_PATH",
+      "source": ".env.example"
+    },
+    {
+      "name": "SESSION_DOMAIN",
+      "source": ".env.example"
+    },
+    {
+      "name": "BROADCAST_CONNECTION",
+      "source": ".env.example"
+    },
+    {
+      "name": "FILESYSTEM_DISK",
+      "source": ".env.example"
+    },
+    {
+      "name": "MEDIA_DISK",
+      "source": ".env.example"
+    },
+    {
+      "name": "QUEUE_CONNECTION",
+      "source": ".env.example"
+    },
+    {
+      "name": "CACHE_STORE",
+      "source": ".env.example"
+    },
+    {
+      "name": "MEMCACHED_HOST",
+      "source": ".env.example"
+    },
+    {
+      "name": "REDIS_CLIENT",
+      "source": ".env.example"
+    },
+    {
+      "name": "REDIS_HOST",
+      "source": ".env.example"
+    },
+    {
+      "name": "REDIS_PASSWORD",
+      "source": ".env.example"
+    },
+    {
+      "name": "REDIS_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "SCOUT_DRIVER",
+      "source": ".env.example"
+    },
+    {
+      "name": "MEILISEARCH_HOST",
+      "source": ".env.example"
+    },
+    {
+      "name": "MEILISEARCH_KEY",
+      "source": ".env.example"
+    },
+    {
+      "name": "MEILISEARCH_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "FORWARD_DB_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "ADMINER_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "MAILPIT_SMTP_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "MAILPIT_UI_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "CARQUERY_BASE_URL",
+      "source": ".env.example"
+    },
+    {
+      "name": "CARQUERY_DEFAULT_YEAR",
+      "source": ".env.example"
+    },
+    {
+      "name": "MOBILE_DE_MODELS_URL",
+      "source": ".env.example"
+    },
+    {
+      "name": "MOBILE_DE_MAKES_FILE",
+      "source": ".env.example"
+    }
+  ],
+  "setupSection": "Quick start (Docker + local PHP)",
+  "commands": [
+    {
+      "kind": "dev",
+      "command": "npm run dev",
+      "source": "package.json scripts"
+    },
+    {
+      "kind": "build",
+      "command": "npm run build",
+      "source": "package.json scripts"
+    }
+  ]
+}
