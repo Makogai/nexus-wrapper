@@ -1,0 +1,12 @@
+{
+  "nexus": 1,
+  "id": "0cf5ed59-0357-4647-aa28-d8ed6258a8b5",
+  "name": "collect_caci",
+  "remoteUrl": "git@github.com:Makogai/collect_caci.git",
+  "stacks": [
+    "docker"
+  ],
+  "packageManagers": [],
+  "commands": [],
+  "defaultBranch": "main"
+}

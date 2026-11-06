@@ -1,0 +1,13 @@
+{
+  "nexus": 1,
+  "id": "33fba8bb-d3e8-450e-9b9d-26848c5d8c1a",
+  "name": "umbra",
+  "remoteUrl": "git@github.com:FilipSmolovicFS/umbra.git",
+  "stacks": [
+    "flutter",
+    "dart"
+  ],
+  "packageManagers": [],
+  "commands": [],
+  "defaultBranch": "main"
+}

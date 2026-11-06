@@ -1,0 +1,279 @@
+{
+  "lockVersion": 1,
+  "template": {
+    "id": "ai-engineering-pro",
+    "version": "1.0.0"
+  },
+  "components": {
+    "constitutions/accessibility.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "86a32f45620a50099c06b8fa9b111107f4019cd000c448315efa9058fc5f2c89"
+    },
+    "constitutions/architecture.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "caa24c6042f3df0a9f13e1e5902e32e7e0255c49ce21c588b92bcb460257ce5a"
+    },
+    "constitutions/backend.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "534892c816d88a2ea3afb69a2a696f94f4460f1a955ebf659467631ade51b4cc"
+    },
+    "constitutions/code-quality.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "c8844e4dbb5c95aff6b4194c322aeb46940807159956bd5b6d26154a33f5d6ce"
+    },
+    "constitutions/core.md": {
+      "template": "minimal",
+      "version": "1.0.0",
+      "sha256": "004679a16757c26a95ebb50f384b4ab3ebc99b9c2206c3904b5ea2a236ec4850"
+    },
+    "constitutions/database.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "3953e3ee30585fff5de4b9a24bd891ffac5bcc9533745ae174717e1625bd3c42"
+    },
+    "constitutions/devops-docker.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "956af75bc9abdfd8ba7f80d9bca0b9f42ce5e47064500975b28aa31bf885c6ee"
+    },
+    "constitutions/documentation.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "3278815be7f91416241daa0bcfe1df36b8880b37fd17f69bf82f3f6907bb2dd1"
+    },
+    "constitutions/engineering-standards.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "380465c9d445219062942274216a60a81784d7ae3f4e182df4c35d737997d181"
+    },
+    "constitutions/frontend.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "1b81dae9708e6a55db58d540d8f6984b17c60bb728f470344584c7df625897c3"
+    },
+    "constitutions/git.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "ae86e585e86c5e4849c8676ca1434be6a01293769f615e0db5d6f39d88c72cf9"
+    },
+    "constitutions/performance.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "174fe51fb6a34cb7006b8c4be8ad6ea4753ba41ece88a3ce1fcfd6e32c78a61e"
+    },
+    "constitutions/security.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "d9f6cd61b8560bb4745f2d899f1ff400a72788a974c5a385ee7ecb65a2448ca2"
+    },
+    "constitutions/stacks/angular.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "ed769e4f298cfd4f8e26d91bc947cf25ce0bb0cd05b3161174a2c0a0e6a4ac7d"
+    },
+    "constitutions/stacks/dart.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "3fcc555aee1a24a8e22bbaf70c7b8822bef882fb7f89331b56a6186c89d6b55a"
+    },
+    "constitutions/stacks/docker.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "6a730558817898893658e58096172b2a6ac143dc08b1707eb86ccd83ffc7417e"
+    },
+    "constitutions/stacks/flutter.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "342fce7839ac93c16c7bf8f8580405d8a05941434e14c0026638207ba6ae807a"
+    },
+    "constitutions/stacks/laravel.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "3a6c65f3e894d9c08b2600c2650ae0b5a3f6fb8965e0e775b9bbb61fdad450ae"
+    },
+    "constitutions/stacks/node.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "68dd81620f975f6fc9a88349ff9116ccc71b7063e73cd7fd8588697cce7cf003"
+    },
+    "constitutions/stacks/php.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "c529059199621d00a09e70efd424224820f4e2e82c69bbc841592eebc5604691"
+    },
+    "constitutions/stacks/python.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "c1bda1de345117df0a30c06bb9dcc26cd80aa742b27dfa02e02615d65daeb1bd"
+    },
+    "constitutions/stacks/react.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "57bdad43a3a8ade1a25b3f8f1875293831e61a392d459e96d4c58369746c4f87"
+    },
+    "constitutions/stacks/rust.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "0994e29e86b829296972ba727ddfe63a3013fda8f6f5f71b5f6a4042cfdaa61a"
+    },
+    "constitutions/stacks/sql.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "e4d76fb8026e4c6cbfe6f4598f92b7f7dd66da59c1e9c9fae04e2bb29e8d58a2"
+    },
+    "constitutions/stacks/typescript.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "e10f791e832a8f7193a0bb547b0094d55b9cdf4f40202750559114d24faf778c"
+    },
+    "constitutions/stacks/vue.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "e3c0f12e9e91703e3c6b1f1c699d193950a6b90eb244613a5d154dfddafd0db4"
+    },
+    "constitutions/testing.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "e5fe6ad2b5332308505c3ff1638c9665769e519addae8e89146648b5176e864e"
+    },
+    "integrations/codex-cli.json": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "2b9f62a61b9e3a9ad6efeade722b03c8048b88bb2a20aff056559a74983adb3a"
+    },
+    "integrations/github-cli.json": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "f463bd42872c34997b6d0c73ae52adf8a220375a4efbe9ce64dff358710102ab"
+    },
+    "integrations/graphify.json": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "0c198b395f92e1421db2d8b843bf1cdb142968b8452d7adbc2c9643831af0bf0"
+    },
+    "integrations/playwright-mcp.json": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "db87736afa730dd83e5a6f72b4f1d659ed31729e529b976c273ef738fb63eb79"
+    },
+    "skills/architecture-documentation/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "cec27fe2c5ea22d73091f2dc9a22031f766478b0b3bc5e0ef43a9e99bfda47d4"
+    },
+    "skills/architecture-documentation/reference.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "88679ac3849bcf3983b9b45d0d2e5f4bb0d33b27c9aa2cd43e8d1be5ae8e8ddb"
+    },
+    "skills/bug-investigation/SKILL.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "506d2f256c0823fc8a0d4a974494847a8092d68e21416bd069f2d35ff24c2a99"
+    },
+    "skills/code-review/SKILL.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "47578e36478b1bcc9149069989dff6954b4919754c87cc10d172d3a15e287b8c"
+    },
+    "skills/code-review/reference.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "57f4fccc9bf0133021aa08d528afeaf5d9b64622fcec99b6f3a8af94320e5118"
+    },
+    "skills/dependency-analysis/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "2ee4747bd05d4e9b2f525340d44c6b42635199c33d3f00dec7259925a56f9c51"
+    },
+    "skills/dependency-analysis/reference.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "957f908a7c07bdfdcc50ef42bf0de7247ef3ecdc9dedb92f237c90f316de06d2"
+    },
+    "skills/development-continuation/SKILL.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "d2f53b957c060cbf37d196a22dd0e362de8f3fba4e5082f098a9f556de3e5824"
+    },
+    "skills/feature-development/SKILL.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "4eb4b6fe211bd9cd970da2326a9fbd957f873dfa628d6cb62dcb9ab199fc80c0"
+    },
+    "skills/playwright-testing/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "2a9ac454e3e397302950904fec16332533b4db71c3c0669a051df4382a4ad14d"
+    },
+    "skills/playwright-testing/reference.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "b0a4dd3eb5b2c8638c22268c9ef755c09f238b04c32f2f8ead2f7c7331c1b1a4"
+    },
+    "skills/project-onboarding/SKILL.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "fd9cc0a7aaeb0206b2450470962aff2820da053765c68918cdd37f757f1eaef6"
+    },
+    "skills/refactoring/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "5a4ffed1cce40d57a8f06b85ae3d6a5c76e1d3273dda545661ae4a7ccedccd7c"
+    },
+    "skills/security-review/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "8fd5cd8088f876fced4e3848098ae96e08e33d2c862372bc7680d817a6ca1f5e"
+    },
+    "skills/security-review/reference.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "bdbbedf012a23fc1abed9a766260365ec4da5ce3d08a109228b59f25e7f7f6dc"
+    },
+    "skills/test-generation/SKILL.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "684264e770f3dced9a604f42c764b3b2d0847e764f9520dd5d0c19351437aa08"
+    },
+    "workflows/bug-fix.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "f4b0765412a1175b11fad6165ceccdb411f980cdfa29fd9f2fb0ce4ef0532fba"
+    },
+    "workflows/code-review.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "9a5e6add085a208903991ac3bc88b7697c906f596944e59be9ab5f5bef5585d3"
+    },
+    "workflows/complex-feature.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "fea4c19bda0fac38b366d955b6c5ea85f5b6d0672fc7a18982aa89b9e8d26abb"
+    },
+    "workflows/prototype.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "5483d32ed92e82a7edd1e61ea882aa8ad5767f90df4e7692207276bb1457e549"
+    },
+    "workflows/release.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "5c4e2b060802384911914ea5e1e62dd4756a1bbbef2c72169276577c99668ecb"
+    },
+    "workflows/standard-feature.md": {
+      "template": "developer",
+      "version": "1.0.0",
+      "sha256": "6ec8da77f3196c546ec42ff41b133eee265948dc230152bad90cb1d2fdc64d92"
+    },
+    "workflows/testing.md": {
+      "template": "ai-engineering-pro",
+      "version": "1.0.0",
+      "sha256": "368f0204a6593c9272e830eda1cc31449e9b383fa86a47882a0d8a6c3afefb27"
+    }
+  }
+}

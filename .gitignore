@@ -1,0 +1,19 @@
+# NEXUS workspace
+# Project repositories cloned into projects/ (or repos/ in older workspaces) are independent Git repositories:
+# never commit them here.
+projects/
+repos/
+
+# Local-only knowledge stays on this machine.
+.nexus-local/
+
+# Operating-system files.
+.DS_Store
+Thumbs.db
+
+# Machine-local runtime data never belongs in a workspace repository.
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "c7739cd9-e92b-4917-a5f8-a9f34126aa03",
+  "name": "Nexus-wrapper",
+  "createdWith": "0.1.0",
+  "minNexusVersion": "0.1.0",
+  "template": {
+    "id": "ai-engineering-pro",
+    "version": "1.0.0"
+  },
+  "features": [
+    "project-context",
+    "development-records",
+    "integrations"
+  ],
+  "layout": {
+    "projects": "projects"
+  },
+  "projects": [
+    {
+      "id": "33fba8bb-d3e8-450e-9b9d-26848c5d8c1a",
+      "name": "umbra",
+      "remoteUrl": "git@github.com:FilipSmolovicFS/umbra.git",
+      "context": "project-context/umbra"
+    },
+    {
+      "id": "0cf5ed59-0357-4647-aa28-d8ed6258a8b5",
+      "name": "collect_caci",
+      "remoteUrl": "git@github.com:Makogai/collect_caci.git",
+      "context": "project-context/collect-caci"
+    }
+  ]
+}

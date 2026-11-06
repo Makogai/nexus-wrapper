@@ -1,0 +1,10 @@
+{
+  "nexus": 1,
+  "id": "da4916a4-aa94-41e5-a8bf-b71b4a6d34be",
+  "name": "test-claude",
+  "remoteUrl": "git@github.com:Makogai/nexus-wrapper.git",
+  "stacks": [],
+  "packageManagers": [],
+  "commands": [],
+  "defaultBranch": "main"
+}

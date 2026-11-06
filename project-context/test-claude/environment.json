@@ -1,0 +1,14 @@
+{
+  "nexus": 1,
+  "requirements": [],
+  "containers": {
+    "dockerfile": null,
+    "composeFile": null,
+    "composeServices": [],
+    "devcontainer": null,
+    "devcontainerImage": null
+  },
+  "envVars": [],
+  "setupSection": null,
+  "commands": []
+}

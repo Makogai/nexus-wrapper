@@ -1,0 +1,134 @@
+{
+  "nexus": 1,
+  "requirements": [
+    {
+      "tool": "docker",
+      "constraint": "",
+      "source": "docker-compose.yml"
+    }
+  ],
+  "containers": {
+    "dockerfile": null,
+    "composeFile": "docker-compose.yml",
+    "composeServices": [
+      "db",
+      "api",
+      "web",
+      "admin"
+    ],
+    "devcontainer": null,
+    "devcontainerImage": null
+  },
+  "envVars": [
+    {
+      "name": "JWT_SECRET",
+      "source": ".env.example"
+    },
+    {
+      "name": "SEED_DEMO",
+      "source": ".env.example"
+    },
+    {
+      "name": "SEED_PASSWORD",
+      "source": ".env.example"
+    },
+    {
+      "name": "CACI_COOLDOWN_MINUTES",
+      "source": ".env.example"
+    },
+    {
+      "name": "CORS_ORIGINS",
+      "source": ".env.example"
+    },
+    {
+      "name": "OPENAI_API_KEY",
+      "source": ".env.example"
+    },
+    {
+      "name": "OPENAI_IMAGE_MODEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "OPENAI_IMAGE_QUALITY",
+      "source": ".env.example"
+    },
+    {
+      "name": "MODERATION_AI",
+      "source": ".env.example"
+    },
+    {
+      "name": "SMTP_HOST",
+      "source": ".env.example"
+    },
+    {
+      "name": "SMTP_PORT",
+      "source": ".env.example"
+    },
+    {
+      "name": "SMTP_USER",
+      "source": ".env.example"
+    },
+    {
+      "name": "SMTP_PASS",
+      "source": ".env.example"
+    },
+    {
+      "name": "MAIL_FROM",
+      "source": ".env.example"
+    },
+    {
+      "name": "EMAIL_VERIFICATION",
+      "source": ".env.example"
+    },
+    {
+      "name": "HEAD_CUT_MODEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "HEAD_DETECT_MODEL",
+      "source": ".env.example"
+    },
+    {
+      "name": "PUBLIC_API_URL",
+      "source": ".env.example"
+    },
+    {
+      "name": "APP_REDIRECTS",
+      "source": ".env.example"
+    },
+    {
+      "name": "GOOGLE_CLIENT_ID",
+      "source": ".env.example"
+    },
+    {
+      "name": "GOOGLE_CLIENT_SECRET",
+      "source": ".env.example"
+    },
+    {
+      "name": "FACEBOOK_APP_ID",
+      "source": ".env.example"
+    },
+    {
+      "name": "FACEBOOK_APP_SECRET",
+      "source": ".env.example"
+    },
+    {
+      "name": "APPLE_SERVICE_ID",
+      "source": ".env.example"
+    },
+    {
+      "name": "APPLE_TEAM_ID",
+      "source": ".env.example"
+    },
+    {
+      "name": "APPLE_KEY_ID",
+      "source": ".env.example"
+    },
+    {
+      "name": "APPLE_PRIVATE_KEY",
+      "source": ".env.example"
+    }
+  ],
+  "setupSection": null,
+  "commands": []
+}

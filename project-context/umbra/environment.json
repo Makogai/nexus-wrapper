@@ -1,0 +1,25 @@
+{
+  "nexus": 1,
+  "requirements": [
+    {
+      "tool": "dart",
+      "constraint": "^3.12.1",
+      "source": "pubspec.yaml environment.sdk"
+    },
+    {
+      "tool": "flutter",
+      "constraint": "",
+      "source": "pubspec.yaml"
+    }
+  ],
+  "containers": {
+    "dockerfile": null,
+    "composeFile": null,
+    "composeServices": [],
+    "devcontainer": null,
+    "devcontainerImage": null
+  },
+  "envVars": [],
+  "setupSection": null,
+  "commands": []
+}
